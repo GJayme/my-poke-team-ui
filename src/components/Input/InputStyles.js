@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import {Tooltip} from '../Tooltip';
+import {Tooltip} from '../Tooltip/Tooltip';
 
 export const Container = styled.div`
   background: #232129;

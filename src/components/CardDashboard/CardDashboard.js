@@ -1,21 +1,20 @@
-import {PokemonImage} from '../PokemonImage';
-import {Button} from '../Button/Button';
-import {ButtonWrapper, Container} from './styles';
-import {findTeamByUserId, removePokeFromTeam} from '../../services/pokeService';
+import {Button, PokemonImage} from '..';
+import {ButtonWrapper, Container} from './CardDashboardStyles';
+import {findTeamByUserIdService, removePokeFromTeam} from '../../services/pokeService';
 import {useUserId} from '../../context/userInfo';
 
-const Card = ({name, id, imagePath}) => {
+const CardDashboard = ({name, id, imagePath}) => {
   const {userId} = useUserId();
   const {setMyTeam} = useUserId();
 
   const handleRemovePokeFromTeam = async () => {
-    const team = await findTeamByUserId(userId);
+    const team = await findTeamByUserIdService(userId);
     const requestBody = {
       teamId: team.id,
       pokeId: id
     };
     await removePokeFromTeam(requestBody);
-    const response = await findTeamByUserId(userId);
+    const response = await findTeamByUserIdService(userId);
     setMyTeam(response);
   };
 
@@ -39,4 +38,4 @@ const Card = ({name, id, imagePath}) => {
   );
 };
 
-export {Card};
+export {CardDashboard};

@@ -1,12 +1,11 @@
-import {PokemonImage} from '../PokemonImage';
-import {Button} from '../Button/Button';
-import {ButtonWrapper, Container} from './styles';
-import {addPokeToTeam} from '../../services/pokeService';
+import {Button, PokemonImage} from '..';
+import {ButtonWrapper, Container} from './CardSearchStyles';
+import {addPokeToTeam} from '../../services';
 import {useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import {useUserId} from '../../context/userInfo';
 
-const Card = ({name, id, imagePath}) => {
+const CardSearch = ({name, id, imagePath}) => {
   const {userId} = useUserId();
   const [redirect, setRedirect] = useState(false);
 
@@ -41,4 +40,4 @@ const Card = ({name, id, imagePath}) => {
   );
 };
 
-export {Card};
+export {CardSearch};

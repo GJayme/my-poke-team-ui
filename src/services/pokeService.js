@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const findTeamByUserId = async (userId) => {
+const findTeamByUserIdService = async (userId) => {
   try {
     const response = await axios.get(`http://localhost:8080/api/v1/teams/user/${userId}/`);
     if (response.data.id !== undefined) {
@@ -54,4 +54,4 @@ const addPokeToTeam = async (data) => {
   }
 }
 
-export {findTeamByUserId, findPoke, removePokeFromTeam, addPokeToTeam};
+export {findTeamByUserIdService, findPoke, removePokeFromTeam, addPokeToTeam};

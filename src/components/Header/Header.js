@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
-import {Container, Navbar} from './styles';
-import {Logo} from '../Logo';
+import {Container, Navbar} from './HeaderStyles';
+import {Logo} from '../Logo/Logo';
 
 const Header = () => (
   <Navbar>

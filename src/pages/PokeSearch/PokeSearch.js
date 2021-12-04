@@ -1,11 +1,9 @@
-import {Header} from '../../components/Header';
-import {Container, Content, DisplayCard, WrapperCard} from './styles';
-import {Card} from '../../components/CardSearch';
-import {useRef, useState} from 'react';
 import {Form} from '@unform/web';
-import {Input} from '../../components/Input';
-import {Button} from '../../components/Button/Button';
-import {findPoke} from '../../services/pokeService';
+import {useRef, useState} from 'react';
+
+import {Button, CardSearch, Header, Input} from '../../components';
+import {Container, Content, DisplayCard, WrapperCard} from './PokeSearchStyles';
+import {findPoke} from '../../services';
 
 const PokeSearch = () => {
   const formRef = useRef(null);
@@ -14,7 +12,7 @@ const PokeSearch = () => {
   function handleDisplayCard() {
     if (poke !== undefined) {
       return (
-        <Card key={poke.name} name={poke.name} imagePath={poke.image} id={poke.id}/>
+        <CardSearch key={poke.name} name={poke.name} imagePath={poke.image} id={poke.id}/>
       );
     }
   }

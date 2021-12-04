@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container } from './TooltipStyles';
 
 const Tooltip = ({ title, className, children }) => {
   return (

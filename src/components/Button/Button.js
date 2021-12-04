@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container } from './ButtonStyles';
 
 const Button = ({ children, ...rest }) => (
   <Container type="button" {...rest}>

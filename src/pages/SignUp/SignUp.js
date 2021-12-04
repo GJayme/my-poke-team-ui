@@ -1,28 +1,28 @@
-import {useCallback, useRef, useState} from 'react';
-import {FiArrowLeft, FiLock, FiMail, FiUser} from 'react-icons/fi';
 import {Form} from '@unform/web';
+import {FiArrowLeft, FiLock, FiMail, FiUser} from 'react-icons/fi';
+import {useCallback, useRef, useState} from 'react';
 import * as Yup from 'yup';
-import getValidationErrors from '../../utils/getValidationErrors';
 
-import {Background, Container, Content} from './styles';
-import {Input} from '../../components/Input';
-import {Button} from '../../components/Button/Button';
+import {Background, Container, Content} from './SignUpStyles';
+import {Button, Input} from '../../components';
+import {createUserAndTeam} from '../../services';
+import getValidationErrors from '../../utils/getValidationErrors';
 import {Link, Navigate} from 'react-router-dom';
-import {createUserAndTeam} from '../../services/userService';
+
+const schemaSignUp = Yup.object().shape({
+  name: Yup.string().required('Nome obrigatório'),
+  email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+  password: Yup.string().min(6, 'No mínimo 6 dígitos')
+});
 
 const SignUp = () => {
   const [redirect, setRedirect] = useState(false);
   const formRef = useRef(null);
 
+  //handleSubmit vai ser recriado uma vez
   const handleSubmit = useCallback(async (data) => {
     try {
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório'),
-        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-        password: Yup.string().min(6, 'No mínimo 6 dígitos')
-      });
-
-      await schema.validate(data, {
+      await schemaSignUp.validate(data, {
         abortEarly: false
       });
       await createUserAndTeam(data);
